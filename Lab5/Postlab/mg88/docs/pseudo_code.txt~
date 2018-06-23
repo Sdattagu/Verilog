@@ -1,0 +1,59 @@
+5.2: Completed Pseudo-code for 4-sample high-pass FIR filter
+
+
+idle:	if(data_ready == 0) -> goto idle
+
+store:	if(data_ready == 0) -> goto eidle
+	else
+	reg[3] = data;
+	err = 0;
+
+zero:	reg[0] = 0;
+	goto sort1;
+
+sort1:	reg[8] = reg[7]; //3->4
+	goto sort2;
+
+sort2:	reg[7] = reg[1]; //2->3
+	goto sort3;
+
+sort3:	reg[1] = reg[2]; //1->2
+	goto sort4;
+
+sort4:	reg[2] = reg[3]; //data -> 1
+	goto mul1;
+
+mul1:	reg[6] = reg[8] * reg[12]; //Sample 4 * F3
+	goto add1;
+
+add1:	reg[0] = reg[0] + reg[6]; //Add S4*F3 to accumulator.
+	if(overflow) -> goto eidle
+	else -> goto mul2
+
+mul2:	reg[6] = reg[7] * reg[4]; //Sample 3 * F2
+	goto sub1;
+
+sub1:	reg[0] = reg[0] - reg[6]; //Subtract S3*F2 from accumulator.
+	if(overflow) -> goto eidle
+	else -> goto mul3;
+
+mul3:	reg[6] = reg[1] * reg[5]; //Sample 2 * F1
+	goto add2;
+
+add2:	reg[0] = reg[0] + reg[6]; //Add S2*F1 to accumulator.
+	if(overflow) -> goto eidle
+	else -> goto mul4;
+
+mul4:	reg[6] = reg[2] * reg[11]; //Sample 1 * F0
+	goto sub2;
+
+sub2:	reg[0] = reg[0] - reg[6]; //Subtract S1*F0 from accumulator.
+	if(overflow) -> goto eidle
+	else -> goto idle;
+
+eidle:	err = 1;
+	if(data_ready == 1) -> goto store;
+	if(data_ready == 0) -> goto eidle;
+
+
+        

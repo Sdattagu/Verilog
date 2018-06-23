@@ -1,0 +1,258 @@
+##############################################################################
+# ECE 337 General Grading System Makefile
+# 
+# Set tab spacing to 2 spaces per tab for best viewing results
+##############################################################################
+
+# Include the common/shared variables for the course to minimize potentially stale values
+# Note: the release_make_vars already includes the common/public ones
+include /home/ecegrid/a/ece337/Course_Prod/course_make_vars
+
+##############################################################################
+# File Related Variables
+##############################################################################
+
+# Select the Cell Library to use with simulations
+GATE_LIB		:= $(AMI_05_LIB)
+
+# Define the work library folders for source and mapped
+S_WORK_LIB := source_work
+M_WORK_LIB := mapped_work
+
+# List internal component/block files here (separate the filenames with spaces)
+# (do not include the source folder in the name)
+COMPONENT_FILES	:= 
+
+# Specify the full filepath of the top level file
+TOP_LEVEL_FILE	:= 
+
+# Specify the filepath of the test bench you want to use (ie. source/tb_top_level.vhd)
+TEST_BENCH	:= 
+
+# Fill in the names of any test bench helper code files (code files referenced by the test bench
+# other than the actual design files)(must be full paths)
+TB_HELPER_FILES :=
+VLOG_TB_HELPER_FILES	:= $(filter %.v %.sv, $(TB_HELPER_FILES))
+VHDL_TB_HELPER_FILES	:= $(filter %.vhd, $(TB_HELPER_FILES))
+
+# How long to simulate the test bench
+SIM_LEN	:= 20 us
+
+# Define the clock period length (leave blank for no clock signal)
+CLOCK_PERIOD := 
+
+# Get the top level design and test_bench module names
+TB_MODULE		:= $(notdir $(basename $(TEST_BENCH)))
+TOP_MODULE	:= $(notdir $(basename $(TOP_LEVEL_FILE)))
+MAPPED_FILE	:= mapped/$(TOP_MODULE).v
+
+# Automatically handle runing on the grid
+LIB_CREATE		:= vlib
+VHDL_COMPILE	:= vcom
+VLOG_COMPILE	:= vlog -sv
+SIMULATE			:= vsim -Lf $(GATE_LIB) -coverage +no_glitch_msg -wlfslim 200 -novopt
+DC_SHELL			:= dc_shell-t
+
+##############################################################################
+# Designate that all "intermediate" files created during chaing make rules
+# should not be deleted (otherwise automatically compiled or synthesized files
+# will be automatically deleted by make after it's done with them).
+##############################################################################
+.SECONDARY:
+
+##############################################################################
+# Designate targets that do not correspond directly to files so that they are
+# run every time they are called
+##############################################################################
+.phony: help clean veryclean
+.phony: sim_source sim_mapped
+.phony: syn_mapped
+
+##############################################################################
+# Make the default target (the one called when no specific one is invoked) to
+# output the proper usage of this makefile
+##############################################################################
+
+help:
+	@echo "----------------------------------------------------------------"
+	@echo "Administrative targets:"
+	@echo "  clean         - removes the temporary files"
+	@echo	"  very_clean    - removes the mapped files as well"
+	@echo	"  print_vars    - prints the contents of the variables"
+	@echo
+	@echo "Simulation targets:"
+	@echo "  sim_source   - compiles and simulates the source version"
+	@echo "  sim_mapped   - compiles and simulates the mapped version"
+	@echo 
+	@echo "Synthesis targets:"
+	@echo "  syn_mapped   - synthesizes the mapped version"
+	@echo "----------------------------------------------------------------"
+
+##############################################################################
+# Administrative Targets
+##############################################################################
+
+clean:
+	@echo -e "Removing temporary files"
+	@rm -rf source_work mapped_work
+	@rm -rf analyzed/ARCH analyzed/ENTI
+	@rm -f analyzed/*
+	@rm -f schematic/*
+	@rm -f *.wlf
+	@rm -f *.svf
+	@rm -f transcript
+	@rm -f *.stran *.mtran
+	@rm -f *.scomp *.scomp
+	@echo -e "Done\n\n"
+	
+veryclean:
+	@$(MAKE) -f gr_makefile --no-print-directory clean
+	@echo -e "Removing synthesized files, synthesis logs, and synthesis reports"
+	@rm -f mapped/*
+	@rm -f reports/*
+	@rm -f *.log
+	@echo -e "Done\n\n"
+
+print_vars:
+	@echo -e "Component Files: \n $(foreach file, $(COMPONENT_FILES), $(file)\n)"
+	@echo -e "Verilog Component Files: \n $(foreach file, $(VLOG_COMPONENT_FILES), $(file)\n)"
+	@echo -e "VHDL Component Files: \n $(foreach file, $(VHDL_COMPONENT_FILES), $(file)\n)"
+	@echo -e "Top level File: $(TOP_LEVEL_FILE)"
+	@echo -e "Testbench: $(TEST_BENCH)"
+	@echo -e "Testbench module: $(TB_MODULE)"
+	
+##############################################################################
+# Simulation Targets
+##############################################################################
+
+define SIM_CMDS
+"transcript sizelimit 200000; \
+ run $(SIM_LEN);	\
+ quit -f"
+endef
+
+define S_COV_CMDS
+"transcript sizelimit 200000; \
+ run $(SIM_LEN);	\
+ coverage report -file $(TB_MODULE).scov -byinstance -codeAll; \
+ quit -f"
+endef
+
+define M_COV_CMDS
+"transcript sizelimit 200000; \
+ run $(SIM_LEN);	\
+ coverage report -file $(TB_MODULE).mcov -byinstance -codeAll; \
+ quit -f"
+endef
+
+sim_source:
+	@rm -rf $(S_WORK_LIB)
+	@$(LIB_CREATE) $(S_WORK_LIB)
+	@echo -e "Compiling: \n $(foreach file, $(TOP_LEVEL_FILE) $(addprefix $(basename $(TOP_LEVEL_FILE)), .sv _scaled.sv)  $(TEST_BENCH), $(file)\n)"
+	@$(VLOG_COMPILE) -work $(S_WORK_LIB) $(addprefix source/, $(TOP_LEVEL_FILE) $(addprefix $(basename $(TOP_LEVEL_FILE)), _scaled.sv)) > $(TOP_MODULE).scomp
+	@$(if $(filter %.vhd, $(TEST_BENCH)), $(VHDL_COMPILE) -work $(S_WORK_LIB) $(TEST_BENCH) >> $(TOP_MODULE).scomp)
+	@$(if $(filter %.sv, $(TEST_BENCH)), $(VLOG_COMPILE) -work $(S_WORK_LIB) $(TEST_BENCH) >> $(TOP_MODULE).scomp)
+	@$(if $(VLOG_TB_HELPER_FILES), $(VLOG_COMPILE) -work $(S_WORK_LIB) $(VLOG_TB_HELPER_FILES) >> $(TOP_MODULE).scomp)
+	@$(if $(VHDL_TB_HELPER_FILES), $(VHDL_COMPILE) -work $(S_WORK_LIB) $(VHDL_TB_HELPER_FILES) >> $(TOP_MODULE).scomp)
+	@echo -e "Simulating Source Designs"
+	@$(SIMULATE) -c -t ps -do $(SIM_CMDS) $(S_WORK_LIB).$(TB_MODULE) -l $(TOP_MODULE).stran
+	@echo -e "Done simulating the source design\n\n"
+	
+sim_mapped: $(addprefix mapped/$(basename $(TOP_LEVEL_FILE)), .v _scaled.v)
+	@rm -rf $(M_WORK_LIB)
+	@$(LIB_CREATE) $(M_WORK_LIB)
+	@echo -e "Compiling Mapped designs and the test bench"
+	@$(VLOG_COMPILE) -work $(M_WORK_LIB) $^ > $(TOP_MODULE).mcomp
+	@$(if $(filter %.vhd, $(TEST_BENCH)), $(VHDL_COMPILE) -work $(M_WORK_LIB) $(TEST_BENCH) >> $(TOP_MODULE).mcomp)
+	@$(if $(filter %.sv, $(TEST_BENCH)), $(VLOG_COMPILE) -work $(M_WORK_LIB) $(TEST_BENCH) >> $(TOP_MODULE).mcomp)
+	@$(if $(VLOG_TB_HELPER_FILES), $(VLOG_COMPILE) -work $(M_WORK_LIB) $(VLOG_TB_HELPER_FILES) >> $(TOP_MODULE).mcomp)
+	@$(if $(VHDL_TB_HELPER_FILES), $(VHDL_COMPILE) -work $(M_WORK_LIB) $(VHDL_TB_HELPER_FILES) >> $(TOP_MODULE).mcomp)
+	@echo -e "Simulating Mapped Designs"
+	@$(SIMULATE) -c -t ps -do $(SIM_CMDS) $(M_WORK_LIB).$(TB_MODULE) -l $(TOP_MODULE).mtran
+	@echo -e "Done simulating the mapped design\n\n"
+
+cov_source:
+	@rm -rf $(S_WORK_LIB)
+	@$(LIB_CREATE) $(S_WORK_LIB)
+	@echo -e "Compiling: \n $(foreach file, $(COMPONENT_FILES) $(TOP_LEVEL_FILE) $(TEST_BENCH), $(file)\n)"
+	@$(VLOG_COMPILE) -work $(S_WORK_LIB) $(TOP_LEVEL_FILE) $(COMPONENT_FILES) > $(TB_MODULE).scomp
+	@$(VLOG_COMPILE) -work $(S_WORK_LIB) source/$(notdir $(TEST_BENCH)) >> $(TB_MODULE).scomp
+	@$(if $(VLOG_TB_HELPER_FILES), $(VLOG_COMPILE) -work $(S_WORK_LIB) $(VLOG_TB_HELPER_FILES) >> $(TB_MODULE).scomp)
+	@$(if $(VHDL_TB_HELPER_FILES), $(VHDL_COMPILE) -work $(S_WORK_LIB) $(VHDL_TB_HELPER_FILES) >> $(TB_MODULE).scomp)
+	@echo -e "Covering Source Design"
+	@$(SIMULATE) -c -t ps -do $(S_COV_CMDS) $(S_WORK_LIB).$(TB_MODULE) -l $(TB_MODULE).stran
+	@echo -e "Done covering the source design\n\n"
+
+cov_mapped: $(MAPPED_FILE)
+	@rm -rf $(M_WORK_LIB)
+	@$(LIB_CREATE) $(M_WORK_LIB)
+	@echo -e "Compiling Mapped design and the test bench"
+	@$(VLOG_COMPILE) -work $(M_WORK_LIB) $< > $(TB_MODULE).mcomp
+	@$(VLOG_COMPILE) -work $(M_WORK_LIB) source/$(notdir $(TEST_BENCH)) >> $(TB_MODULE).mcomp
+	@$(if $(VLOG_TB_HELPER_FILES), $(VLOG_COMPILE) -work $(M_WORK_LIB) $(VLOG_TB_HELPER_FILES) >> $(TB_MODULE).mcomp)
+	@$(if $(VHDL_TB_HELPER_FILES), $(VHDL_COMPILE) -work $(M_WORK_LIB) $(VHDL_TB_HELPER_FILES) >> $(TB_MODULE).mcomp)
+	@echo -e "Covering Mapped Design"
+	@$(SIMULATE) -c -t ps -do $(M_COV_CMDS) $(M_WORK_LIB).$(TB_MODULE) -l $(TB_MODULE).mtran
+	@echo -e "Done covering the mapped design\n\n"
+
+##############################################################################
+# Define the synthesis commands to use
+##############################################################################
+	
+define SYN_CMDS
+'# Step 1:  Read in the source file                                                     \n\
+analyze -format sverilog -lib WORK {$(DEP_SUB_FILES) $(TOP_LEVEL_FILE)}          			\n\
+elaborate $(TOP_MODULE) -lib WORK -update                       						            \n\
+                                                                                        \n\
+uniquify                                                                                \n\
+# Step 2: Set design constraints                                                        \n\
+# Uncomment below to set timing, area, power, etc. constraints                          \n\
+# set_max_delay <delay> -from "<input>" -to "<output>"                                  \n\
+# set_max_area <area>                                                                   \n\
+# set_max_total_power <power> mW                                                        \n\
+$(if $(CLOCK_PERIOD), create_clock "clk" -name "clk" -period $(CLOCK_PERIOD)) 					\n\
+                                                                                        \n\
+# Step 3: Compile the design                                                            \n\
+compile -map_effort medium                                                              \n\
+                                                                                        \n\
+# Step 4: Output reports                                                                \n\
+report_timing -path full -delay max -max_paths 1 -nworst 1 > reports/$(TOP_MODULE).rep  \n\
+report_area >> reports/$(TOP_MODULE).rep                                                \n\
+report_power -hier >> reports/$(TOP_MODULE).rep                                         \n\
+                                                                                        \n\
+# Step 5: Output final VHDL and Verilog files                                           \n\
+write -format verilog -hierarchy -output "$(MAPPED_FILE)"                       				\n\
+echo "\\nScript Done\\n"                                                                \n\
+echo "\\nChecking Design\\n"                                                            \n\
+check_design                                                                            \n\
+exit'
+endef
+
+##############################################################################
+# Synthesis Target
+##############################################################################
+
+# Specific file variable filler, should still execute the pattern rule just with the filled variables
+mapped/flex_counter_scaled.v: DEP_SUB_FILES:='flex_counter.sv'
+mapped/flex_counter_scaled.v: CLOCK_PERIOD:='2'
+mapped/flex_counter_scaled.v: source/flex_counter.sv 
+
+# Specific file variable filler, should still execute the pattern rule just with the filled variables
+mapped/flex_counter.v: CLOCK_PERIOD:='2'
+
+mapped/%.v: SHELL := /usr/local/bin/tcsh
+mapped/%.v:
+	@echo "Synthesizing design: $@\n"
+	@$(MAKE) --no-print-directory -f gr_makefile syn_mapped TOP_LEVEL_FILE='$*.sv' DEP_SUB_FILES='$(DEP_SUB_FILES)' CLOCK_NAME='$(CLOCK_NAME)' CLOCK_PERIOD='$(CLOCK_PERIOD)' > $*.log
+	@echo "Synthesis run attempt for $@ complete"
+	@echo "Checking synthesis attempt for errors"
+	@syschk -w $*
+	@echo "\nCheck for synthesis attempt errors complete, open $*.log for details if errors were found"
+	@echo "\nRemember to check $*.log for latches and timing arcs"
+	@echo "Synthesis run complete for design: $@\n\n"
+
+syn_mapped:
+	@echo -e "Synthesizing design: $(TOP_LEVEL_FILE)"
+	@echo -e $(SYN_CMDS) | $(DC_SHELL) > $(TOP_MODULE).log
+	@echo -e "Done\n\n"
+

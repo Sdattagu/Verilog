@@ -1,0 +1,30 @@
+Lab 5 Postlab Questions
+
+10.1 DESIGN QUESTIONS
+
+Question:
+
+What is the minimum amount of time that data_ready must remain asserted to ensure correct operation?
+-Data_ready must be asserted for 2400000 ps in order to ensure correct operation.
+
+What is the minimum amount of time, in clock cycles, that data must remain valid after data_ready is asserted in order to ensure correct operation?
+-Data must remain valid for 2 cycles after data_ready is asserted in order to ensure correct operation.
+
+Assumed that all setup and hold times, as well as any propagation delays, are negligible.
+
+10.2 VERILOG I/O QUESTIONS 
+
+Questions:
+
+How are the image files different? Does this make sense given the filter design built in the lab? Why or why not?
+-The filtered image is completely black. I don't think this was the correct intended operation.
+
+What is the general syntax for each of the file IO functions used in the provided test bench (tb_fir_filter_image.sv)
+-make sim_image
+
+What are the different format specifiers available for use in file functions like $fscanf(...)?
+-%f, %d, %i
+
+
+
+

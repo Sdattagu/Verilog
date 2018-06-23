@@ -1,0 +1,40 @@
+
+
+
+
+Sync_Low Results:
+Mapped Results:
+Total Score: 2.00/2.00
+Score breakdown by test case:
+ Results for basic test cases:
+  Test case 0: 0.333/0.333
+  Test case 1: 0.333/0.333
+  Test case 2: 0.333/0.333
+  Test case 3: 0.333/0.333
+  Test case 4: 0.333/0.333
+  Test case 5: 0.333/0.333
+
+
+Tb_Sync_Low Results:
+Source Results:
+ Total Score: 2.0000/2.0000
+  All missed/failed test cases will now be reported below:
+
+
+Sync_High Results:
+Mapped Results:
+Total Score: 1.00/1.00
+Score breakdown by test case:
+ Results for basic test cases:
+  Test case 0: 0.167/0.167
+  Test case 1: 0.167/0.167
+  Test case 2: 0.167/0.167
+  Test case 3: 0.167/0.167
+  Test case 4: 0.167/0.167
+  Test case 5: 0.167/0.167
+
+
+Tb_Sync_High Results:
+Source Results:
+Error: Not stated by test bench  All missed/failed test cases will now be reported below:
+

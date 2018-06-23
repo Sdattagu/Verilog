@@ -1,0 +1,35 @@
+Coverage Report Summary Data by instance
+
+=================================================================================
+=== Instance: /tb_eop_detect/DUT
+=== Design Unit: source_work.eop_detect
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            3         3         0     100.0
+    Branches                         2         2         0     100.0
+    FEC Condition Terms              2         1         1      50.0
+    FEC Expression Terms             0         0         0     100.0
+    FSMs                                                       100.0
+        States                       0         0         0     100.0
+        Transitions                  0         0         0     100.0
+    Toggle Bins                      6         6         0     100.0
+
+=================================================================================
+=== Instance: /tb_eop_detect
+=== Design Unit: source_work.tb_eop_detect
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           40        32         8      80.0
+    Branches                        16         8         8      50.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+    FSMs                                                       100.0
+        States                       0         0         0     100.0
+        Transitions                  0         0         0     100.0
+    Toggle Bins                      6         6         0     100.0
+
+
+Total Coverage By Instance (filtered view): 71.7%
+

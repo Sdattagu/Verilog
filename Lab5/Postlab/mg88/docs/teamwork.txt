@@ -1,0 +1,38 @@
+﻿ECE 337 Lab 5 Teamwork Report
+Shounak Dattagupta
+Collaborated with Alec Funke
+
+1) The team member made a sincere effort (to the best that you can tell) to figure out the design and testing so as to be able to contribute to the team effort.
+
+Myself – I would rate myself as a 5. 
+
+Alec Funke – 4
+
+This team member was respectful and considerate of other team members.
+
+Myself – 5.
+Alec – 5.
+
+Behaving appropriately is a crucial skill on any professional team, both in academia and industry. This goes without saying. 
+
+This team member fulfilled all promised or commitments to team members including those listed in ground rules 1-5.
+
+Myself – 5.
+Alec – 5.
+
+Each team member ensured that every commitment was met on time, the commitments included meeting up for discussions on modules and other design functionality. Overall this led to a successful design compilation.  
+
+You were able to achieve or learn more with this partner than you would have without. 
+
+I would say this is partially true. 3. 
+
+2) Myself – Solidified everyone's understanding of every module.
+
+Alec – Asked questions and actively made sure everyone understood what is going on. 
+
+3) We met several times during open lab hours and during other open lab sections. We maintain a groupme in which we constantly communicate.
+
+4) Above.
+5) Above.
+
+6) I did not really look at anyone else's test bench code other than my own. 

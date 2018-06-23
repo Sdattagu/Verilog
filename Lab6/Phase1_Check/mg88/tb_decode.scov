@@ -1,0 +1,35 @@
+Coverage Report Summary Data by instance
+
+=================================================================================
+=== Instance: /tb_decode/DUT
+=== Design Unit: source_work.decode
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           12        11         1      91.6
+    Branches                         8         7         1      87.5
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+    FSMs                                                       100.0
+        States                       0         0         0     100.0
+        Transitions                  0         0         0     100.0
+    Toggle Bins                     18        13         5      72.2
+
+=================================================================================
+=== Instance: /tb_decode
+=== Design Unit: source_work.tb_decode
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           32        32         0     100.0
+    Branches                         0         0         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+    FSMs                                                       100.0
+        States                       0         0         0     100.0
+        Transitions                  0         0         0     100.0
+    Toggle Bins                     12         9         3      75.0
+
+
+Total Coverage By Instance (filtered view): 86.1%
+

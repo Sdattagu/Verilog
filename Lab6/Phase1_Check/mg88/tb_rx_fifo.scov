@@ -1,0 +1,125 @@
+Coverage Report Summary Data by instance
+
+=================================================================================
+=== Instance: /tb_rx_fifo/DUT/ORIG/UFIFORAM
+=== Design Unit: /home/ecegrid/a/ece337/Class0.5u/ECE337_IP/vsim.fiforam(rtl)
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            6         6         0     100.0
+    Branches                         4         4         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+    FSMs                                                       100.0
+        States                       0         0         0     100.0
+        Transitions                  0         0         0     100.0
+    Toggle Bins                     16         0        16       0.0
+
+=================================================================================
+=== Instance: /tb_rx_fifo/DUT/ORIG/UWFC/WPU1
+=== Design Unit: /home/ecegrid/a/ece337/Class0.5u/ECE337_IP/vsim.write_ptr(rtl)
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           20        20         0     100.0
+    Branches                        17        17         0     100.0
+    FEC Condition Terms             11        11         0     100.0
+    FEC Expression Terms             8         8         0     100.0
+    FSMs                                                       100.0
+        States                       0         0         0     100.0
+        Transitions                  0         0         0     100.0
+    Toggle Bins                     46        35        11      76.0
+
+=================================================================================
+=== Instance: /tb_rx_fifo/DUT/ORIG/UWFC
+=== Design Unit: /home/ecegrid/a/ece337/Class0.5u/ECE337_IP/vsim.write_fifo_ctrl(rtl)
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           20        20         0     100.0
+    Branches                        14        14         0     100.0
+    FEC Condition Terms              2         2         0     100.0
+    FEC Expression Terms             4         2         2      50.0
+    FSMs                                                       100.0
+        States                       0         0         0     100.0
+        Transitions                  0         0         0     100.0
+    Toggle Bins                     52        24        28      46.1
+
+=================================================================================
+=== Instance: /tb_rx_fifo/DUT/ORIG/URFC/RPU1
+=== Design Unit: /home/ecegrid/a/ece337/Class0.5u/ECE337_IP/vsim.read_ptr(rtl)
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           20        19         1      95.0
+    Branches                        17        10         7      58.8
+    FEC Condition Terms             11         0        11       0.0
+    FEC Expression Terms             8         0         8       0.0
+    FSMs                                                       100.0
+        States                       0         0         0     100.0
+        Transitions                  0         0         0     100.0
+    Toggle Bins                     46         0        46       0.0
+
+=================================================================================
+=== Instance: /tb_rx_fifo/DUT/ORIG/URFC
+=== Design Unit: /home/ecegrid/a/ece337/Class0.5u/ECE337_IP/vsim.read_fifo_ctrl(rtl)
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           20        20         0     100.0
+    Branches                        14        13         1      92.8
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             4         2         2      50.0
+    FSMs                                                       100.0
+        States                       0         0         0     100.0
+        Transitions                  0         0         0     100.0
+    Toggle Bins                     62        23        39      37.0
+
+=================================================================================
+=== Instance: /tb_rx_fifo/DUT/ORIG
+=== Design Unit: /home/ecegrid/a/ece337/Class0.5u/ECE337_IP/vsim.fifo(rtl)
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                            0         0         0     100.0
+    Branches                         0         0         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+    FSMs                                                       100.0
+        States                       0         0         0     100.0
+        Transitions                  0         0         0     100.0
+    Toggle Bins                     76        36        40      47.3
+
+=================================================================================
+=== Instance: /tb_rx_fifo/DUT
+=== Design Unit: source_work.rx_fifo
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           72        39        33      54.1
+    Branches                        14         3        11      21.4
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+    FSMs                                                       100.0
+        States                       0         0         0     100.0
+        Transitions                  0         0         0     100.0
+    Toggle Bins                    118        23        95      19.4
+
+=================================================================================
+=== Instance: /tb_rx_fifo
+=== Design Unit: source_work.tb_rx_fifo
+=================================================================================
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                           23        23         0     100.0
+    Branches                         0         0         0     100.0
+    FEC Condition Terms              0         0         0     100.0
+    FEC Expression Terms             0         0         0     100.0
+    FSMs                                                       100.0
+        States                       0         0         0     100.0
+        Transitions                  0         0         0     100.0
+    Toggle Bins                     44        20        24      45.4
+
+
+Total Coverage By Instance (filtered view): 59.3%
+

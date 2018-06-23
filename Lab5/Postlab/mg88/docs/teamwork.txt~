@@ -1,0 +1,38 @@
+﻿ECE 337 Lab 4 Teamwork Report
+Shounak Dattagupta
+Collaborated with Alec Funke
+
+1) The team member made a sincere effort (to the best that you can tell) to figure out the design and testing so as to be able to contribute to the team effort.
+
+Myself – I would rate myself as a 5. I spent several hours carefully discussing the control logic flow of the RCU before actually trying to create a state diagram and RTL diagram for it. In addition, I attempted several possible valid implementations of the timer module before choosing the simplest and most reliable version. In addition, I studied the top-level diagrams for the UART Receiver block extensively, and calculated all parameters before attempting to code – when coding, I ensured that each procedural block and variable was carefully explained and documented.
+
+Alec Funke – I would rate Alec as a 5. Alec spent an extensive period of time discussing the control logic for not only the RCU, timer modules, and 9-bit shift register, but also for the provided blocks such as the start/stop bit checker. In addition, Alec carefully considered the layout of the RCU state transition diagram before implementing the module. Overall, Alec showed careful and thoughtful consideration of every design task within the Lab and executed them to the best of his ability. 
+
+This team member was respectful and considerate of other team members.
+
+Myself – 5.
+Alec – 5.
+
+Behaving appropriately is a crucial skill on any professional team, both in academia and industry. This goes without saying. 
+
+This team member fulfilled all promised or commitments to team members including those listed in ground rules 1-5.
+
+Myself – 5.
+Alec – 5.
+
+Each team member ensured that every commitment was met on time, the commitments included meeting up for discussions on modules and other design functionality. Overall this led to a successful design compilation.  
+
+You were able to achieve or learn more with this partner than you would have without. 
+
+I would say this is partially true. 3. 
+
+2) Myself – Solidified everyone's understanding of every module, including the RCU and timer modules, used RTL and state diagrams to reinforce the understanding.
+
+Alec – Asked questions and actively made sure everyone understood what is going on. 
+
+3) We met several times during open lab hours and during other open lab sections. We maintain a groupme in which we constantly communicate.
+
+4) Above.
+5) Above.
+
+6) I did not really look at anyone else's test bench code other than my own. 

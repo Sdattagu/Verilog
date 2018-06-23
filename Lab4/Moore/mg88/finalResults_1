@@ -1,0 +1,46 @@
+
+
+
+
+Moore Results:
+Source Results:
+Total Score: 1.00/1.00
+Score breakdown by test case:
+ Results for basic test cases:
+  Test case 1: 0.100/0.100
+  Test case 2: 0.100/0.100
+  Test case 3: 0.100/0.100
+  Test case 4: 0.100/0.100
+  Test case 5: 0.100/0.100
+  Test case 6: 0.100/0.100
+  Test case 7: 0.100/0.100
+  Test case 8: 0.100/0.100
+  Test case 9: 0.100/0.100
+  Test case 10: 0.100/0.100
+
+
+
+Mapped Results:
+Total Score: 1.00/1.00
+Score breakdown by test case:
+ Results for basic test cases:
+  Test case 1: 0.100/0.100
+  Test case 2: 0.100/0.100
+  Test case 3: 0.100/0.100
+  Test case 4: 0.100/0.100
+  Test case 5: 0.100/0.100
+  Test case 6: 0.100/0.100
+  Test case 7: 0.100/0.100
+  Test case 8: 0.100/0.100
+  Test case 9: 0.100/0.100
+  Test case 10: 0.100/0.100
+
+
+
+Coverage Results from Running tb_moore.sv for 10us:
+Source Results:
+Total Score: 1.00/1.00
+
+Mapped Results:
+Total Score: 1.00/1.00
+

@@ -1,0 +1,93 @@
+
+
+
+Source Results:
+Total Score: 22.08/80.00
+Score breakdown by test case:
+ Results for basic test cases:
+  Test case 0: 4.000/4.000
+  Test case 1: 8.000/16.000
+   Correct behavior during 1 Byte Packet receiving initiated rcving status check
+   Correct behavior during 1 Byte Packet receiving initiated error flag check
+   Incorrect behavior during 1 Byte Packet reception complete rcving status check
+   Correct behavior during 1 Byte Packet reception complete error flag check
+   Incorrect behavior during 1 Byte Packet reception complete empty flag check
+   Incorrect behavior during 1 Byte Packet reception complete recieved data value check
+   Correct behavior during 1 Byte Packet byte read empty flag check
+  Test case 2: 4.000/8.000
+   Correct behavior during 8 Byte Packet byte 1 reception complete rcving status check
+   Correct behavior during 8 Byte Packet byte 1 reception complete error flag check
+   Correct behavior during 8 Byte Packet byte 2 reception complete rcving status check
+   Correct behavior during 8 Byte Packet byte 2 reception complete error flag check
+   Correct behavior during 8 Byte Packet byte 3 reception complete rcving status check
+   Incorrect behavior during 8 Byte Packet byte 3 reception complete error flag check
+   Correct behavior during 8 Byte Packet byte 4 reception complete rcving status check
+   Correct behavior during 8 Byte Packet byte 4 reception complete error flag check
+   Correct behavior during 8 Byte Packet byte 5 reception complete rcving status check
+   Correct behavior during 8 Byte Packet byte 5 reception complete error flag check
+   Correct behavior during 8 Byte Packet byte 6 reception complete rcving status check
+   Incorrect behavior during 8 Byte Packet byte 6 reception complete error flag check
+   Correct behavior during 8 Byte Packet byte 7 reception complete rcving status check
+   Correct behavior during 8 Byte Packet byte 7 reception complete error flag check
+   Correct behavior during 8 Byte Packet byte 8 reception complete rcving status check
+   Correct behavior during 8 Byte Packet byte 8 reception complete error flag check
+   Incorrect behavior during 8 Byte Packet reception complete rcving status check
+   Correct behavior during 8 Byte Packet reception complete error flag check
+   Incorrect behavior during 8 Byte Packet reception complete byte 1 read empty flag check
+   Incorrect behavior during 8 Byte Packet reception complete byte 1 read data value check
+   Incorrect behavior during 8 Byte Packet reception complete byte 2 read empty flag check
+   Incorrect behavior during 8 Byte Packet reception complete byte 2 read data value check
+   Incorrect behavior during 8 Byte Packet reception complete byte 3 read empty flag check
+   Incorrect behavior during 8 Byte Packet reception complete byte 3 read data value check
+   Incorrect behavior during 8 Byte Packet reception complete byte 4 read empty flag check
+   Incorrect behavior during 8 Byte Packet reception complete byte 4 read data value check
+   Incorrect behavior during 8 Byte Packet reception complete byte 5 read empty flag check
+   Incorrect behavior during 8 Byte Packet reception complete byte 5 read data value check
+   Incorrect behavior during 8 Byte Packet reception complete byte 6 read empty flag check
+   Incorrect behavior during 8 Byte Packet reception complete byte 6 read data value check
+   Incorrect behavior during 8 Byte Packet reception complete byte 7 read empty flag check
+   Incorrect behavior during 8 Byte Packet reception complete byte 7 read data value check
+   Incorrect behavior during 8 Byte Packet reception complete byte 8 read empty flag check
+   Incorrect behavior during 8 Byte Packet reception complete byte 8 read data value check
+   Correct behavior during 8 Byte Packet all bytes read empty flag check
+  Test case 3: 6.078/12.000
+   Correct behavior during 3 Packet sequence, packet 1 byte 1 reception complete rcving status check
+   Correct behavior during 3 Packet sequence, packet 1 byte 1 reception complete error flag check
+   Correct behavior during 3 Packet sequence, packet 1 byte 2 reception complete rcving status check
+   Correct behavior during 3 Packet sequence, packet 1 byte 2 reception complete error flag check
+   Correct behavior during 3 Packet sequence, packet 1 byte 3 reception complete rcving status check
+   Correct behavior during 3 Packet sequence, packet 1 byte 3 reception complete error flag check
+   Incorrect behavior during 3 Packet sequence, packet 1 reception complete rcving status check
+   Incorrect behavior during 3 Packet sequence, packet 1 reception complete error flag check
+   Incorrect behavior during 3 Packet sequence, packet 1 reception complete empty flag check
+   Correct behavior during 3 Packet sequence, packet 2 byte 1 reception complete rcving status check
+   Correct behavior during 3 Packet sequence, packet 2 byte 1 reception complete error flag check
+   Incorrect behavior during 3 Packet sequence, packet 2 reception complete rcving status check
+   Correct behavior during 3 Packet sequence, packet 2 reception complete error flag check
+   Incorrect behavior during 3 Packet sequence, packet 2 reception complete empty flag check
+   Correct behavior during 3 Packet sequence, packet 3 byte 1 reception complete rcving status check
+   Correct behavior during 3 Packet sequence, packet 3 byte 1 reception complete error flag check
+   Correct behavior during 3 Packet sequence, packet 3 byte 2 reception complete rcving status check
+   Correct behavior during 3 Packet sequence, packet 3 byte 2 reception complete error flag check
+   Incorrect behavior during 3 Packet sequence, packet 3 reception complete rcving status check
+   Correct behavior during 3 Packet sequence, packet 3 reception complete error flag check
+   Correct behavior during 3 Packet sequence, packet 3 reception complete empty flag check
+   Correct behavior during 3 Packet sequence, packet 1 byte 1 read empty flag check
+   Incorrect behavior during 3 Packet sequence, packet 1 byte 1 read data value check
+   Incorrect behavior during 3 Packet sequence, packet 1 byte 2 read empty flag check
+   Incorrect behavior during 3 Packet sequence, packet 1 byte 2 read data value check
+   Incorrect behavior during 3 Packet sequence, packet 1 byte 3 read empty flag check
+   Incorrect behavior during 3 Packet sequence, packet 1 byte 3 read data value check
+   Incorrect behavior during 3 Packet sequence, packet 2 byte 1 read empty flag check
+   Incorrect behavior during 3 Packet sequence, packet 2 byte 1 read data value check
+   Incorrect behavior during 3 Packet sequence, packet 3 byte 1 read empty flag check
+   Incorrect behavior during 3 Packet sequence, packet 3 byte 1 read data value check
+   Incorrect behavior during 3 Packet sequence, packet 3 byte 2 read empty flag check
+   Incorrect behavior during 3 Packet sequence, packet 3 byte 2 read data value check
+   Correct behavior during 3 Packet sequence, all bytes read empty flag check
+As this is supposed to be used to grade a functional design that you have
+already throughly tested, the more advanced test cases will not contribute
+points to your score until all of the Basic test cases are 100% satisfied.
+Additionally the results of the more advanced test cases will not be reported
+to you until all of the Basic test cases are 100% satisfied.
+
